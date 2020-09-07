@@ -32,13 +32,19 @@ int LinkedList<T>::size() const
 	Node<T>* temp = m_front;
 	int size = 1;
 
-	if (m_front == nullptr) {
+	if (m_front == nullptr)
+	{
 		size = 0;
 	}
-	while(temp->getNext() != nullptr)
+	else
 	{
-		temp = temp->getNext();
-		size++;
+
+
+		while(temp->getNext() != nullptr)
+		{
+			temp = temp->getNext();
+			size++;
+		}
 	}
 	return(size);
 }
@@ -127,12 +133,15 @@ bool LinkedList<T>::removeBack()
 	Node<T>* lastNode = m_front;
 	Node<T>* secondintoLast = m_front;
 	bool isRemoved = false;
-	if (m_front == nullptr) {
+	if (m_front == nullptr)
+	{
 		isRemoved = false;
-		if ((m_front->getNext() == nullptr)) {
+		if ((m_front->getNext() == nullptr))
+		{
 			delete m_front;
 			isRemoved = true;
 		}
+	}
 	else
 		{
 			while ((secondintoLast->getNext()->getNext()) != nullptr )
@@ -144,7 +153,6 @@ bool LinkedList<T>::removeBack()
 				secondintoLast->setNext(nullptr);
 				m_size--;
 				isRemoved = true;
-			}
 		}
 		return(isRemoved);
 }
