@@ -30,17 +30,17 @@ template <typename T>
 int LinkedList<T>::size() const
 {
 	Node<T>* temp = m_front;
-	m_size = 1;
+	int size = 1;
 
 	if (m_front == nullptr) {
-		m_size = 0;
+		size = 0;
 	}
 	while(temp->getNext() != nullptr)
 	{
 		temp = temp->getNext();
-		m_size++;
+		size++;
 	}
-	return(m_size);
+	return(size);
 }
 
 template <typename T>
@@ -124,17 +124,30 @@ void LinkedList<T>::addFront(T value)
 template <typename T>
 bool LinkedList<T>::removeBack()
 {
-	Node<T>* lastNode = nullptr;
-	Node<T>* secondintoLast = nullptr;
+	Node<T>* lastNode = m_front;
+	Node<T>* secondintoLast = m_front;
 	bool isRemoved = false;
-
-
-
-	/** TODO
-		Fix this method
-	*/
-	return(isRemoved);
+	if (m_front == nullptr) {
+		isRemoved = false;
+		if ((m_front->getNext() == nullptr)) {
+			delete m_front;
+			isRemoved = true;
+		}
+	else
+		{
+			while ((secondintoLast->getNext()->getNext()) != nullptr )
+			{
+				secondintoLast->getNext();
+			}
+				lastNode = secondintoLast->getNext();
+				delete lastNode;
+				secondintoLast->setNext(nullptr);
+				isRemoved = true;
+			}
+		}
+		return(isRemoved);
 }
+
 
 template <typename T>
 bool LinkedList<T>::removeFront()
